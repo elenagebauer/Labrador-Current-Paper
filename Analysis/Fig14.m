@@ -6,6 +6,7 @@ load('../Data/tauy_plot_LS.mat');
 load('../Data/theta_sec.mat');
 load('../Data/M_sec.mat')
 load('../Data/lat_lon_sec.mat')
+load('../Data/all_lat_lon_quiver.mat');
 sec_names={'AZMP_crossBI_MB';'AZMP_crossMB_SI';'AZMP_crossSI_WB';'AZMP_crossWB_BB';'AZMP_crossBB_FC';'AZMP_crossFC_SEGB'};
 cross_names={'BI';'MB';'SI';'WB';'BB';'FC';'SEGB'}
 years_a={'y2007';'y2008';'y2009';'y2010';'y2011';'y2012';'y2013';'y2014';'y2015';'y2016';'y2017';'y2018'};

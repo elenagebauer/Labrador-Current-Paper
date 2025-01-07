@@ -1,7 +1,7 @@
 % Figure 9
 
-load('../../Data/velocity_data_reduced2.mat')
-load('../../Data/index_sections.mat')
+load('../Data/velocity_data_reduced2.mat')
+load('../Data/index_sections.mat')
 load('../Data/V_totalmean_yearlymean.mat')
 cross_names={'BI';'MB';'SI';'WB';'BB';'FC';'SEGB'};
 years_a={'y2007';'y2008';'y2009';'y2010';'y2011';'y2012';'y2013';'y2014';'y2015';'y2016';'y2017';'y2018'};
