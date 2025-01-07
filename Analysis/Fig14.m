@@ -1,10 +1,11 @@
 %Figure 14
 
 load('../Data/Section_latlon_values.mat');
-load('../Data/tau_Labradorsee.mat');
-load('../Data/Section_latlon_values.mat');
+load('../Data/taux_plot_LS.mat');
+load('../Data/tauy_plot_LS.mat');
 load('../Data/theta_sec.mat');
 load('../Data/M_sec.mat')
+load('../Data/lat_lon_sec.mat')
 sec_names={'AZMP_crossBI_MB';'AZMP_crossMB_SI';'AZMP_crossSI_WB';'AZMP_crossWB_BB';'AZMP_crossBB_FC';'AZMP_crossFC_SEGB'};
 cross_names={'BI';'MB';'SI';'WB';'BB';'FC';'SEGB'}
 years_a={'y2007';'y2008';'y2009';'y2010';'y2011';'y2012';'y2013';'y2014';'y2015';'y2016';'y2017';'y2018'};
@@ -45,8 +46,6 @@ for s=1:size(sec_names,1);
        M_avyear.(name)(n,:)=nanmean(means,1) ;
     end
 end
-taux_LS.(month)=squeeze(taux_LS.(month));
-tauy_LS.(month)=squeeze(tauy_LS.(month));
 
 vertical_gap = 0.08;
 horizontal_gap = 0.09;
@@ -68,10 +67,6 @@ for m=1:12;
     month=char(month_vec(m,:));
     ax1=subplot(3,4,m);
     set(ax1, 'Position', positions);
-    taux_LS.(month)=squeeze(taux_LS.(month));
-    tauy_LS.(month)=squeeze(tauy_LS.(month));
-    taux_plot.(month)=taux_LS.(month)(1:70:end, 1:70:end);
-    tauy_plot.(month)=tauy_LS.(month)(1:70:end, 1:70:end);
     lon_plot=lon(1:70:end, 1:70:end);
     lat_plot=lat(1:70:end, 1:70:end);
 

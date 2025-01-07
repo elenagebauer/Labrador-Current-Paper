@@ -1,8 +1,13 @@
 % Figure 12b
 
-load('../Data/wind.mat');
-load('../Data/LAB60_SAL_data.mat')
+%load('../Data/wind.mat');
+load('../Data/LAB60_SAL_data.mat');
+load('../Data/lat_lon_sec.mat');
+load('../Data/tau_P_mean_sec.mat')
+
 sec_names={'AZMP_crossBI_MB';'AZMP_crossMB_SI';'AZMP_crossSI_WB';'AZMP_crossWB_BB';'AZMP_crossBB_FC';'AZMP_crossFC_SEGB'};
+
+
 cross_names={'BI';'MB';'SI';'WB';'BB';'FC';'SEGB'}
 years_a={'y2007';'y2008';'y2009';'y2010';'y2011';'y2012';'y2013';'y2014';'y2015';'y2016';'y2017';'y2018'};
 period_y=[2007:2018];

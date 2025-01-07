@@ -1,5 +1,10 @@
 % Figure 8
-load('../Data/velocity_data.mat')
+load('../Data/velocity_data_reduced2.mat')
+cross_names={'BI';'MB';'SI';'WB';'BB';'FC';'SEGB'};
+years_a={'y2007';'y2008';'y2009';'y2010';'y2011';'y2012';'y2013';'y2014';'y2015';'y2016';'y2017';'y2018'};
+period_m=[1:12];
+month_vec = ['Jan';'Feb';'Mar';'Apr';'May';'Jun';'Jul';'Aug';'Sep';'Oct';'Nov';'Dec'];
+sec_names={'AZMP_crossBI_MB';'AZMP_crossMB_SI';'AZMP_crossSI_WB';'AZMP_crossWB_BB';'AZMP_crossBB_FC';'AZMP_crossFC_SEGB'};
 
 for s=1:size(cross_names,1);
      name=char(cross_names(s,:));
