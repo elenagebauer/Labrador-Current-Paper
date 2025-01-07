@@ -1,60 +1,60 @@
 % Figure 9
 
-load('../Data/velocity_data_reduced2.mat')
-load('../Data/index_sections.mat')
-load('../Data/V_monthly.mat')
+load('../../Data/velocity_data_reduced2.mat')
+load('../../Data/index_sections.mat')
+load('../Data/V_totalmean_yearlymean.mat')
 cross_names={'BI';'MB';'SI';'WB';'BB';'FC';'SEGB'};
 years_a={'y2007';'y2008';'y2009';'y2010';'y2011';'y2012';'y2013';'y2014';'y2015';'y2016';'y2017';'y2018'};
 period_m=[1:12];
 month_vec = ['Jan';'Feb';'Mar';'Apr';'May';'Jun';'Jul';'Aug';'Sep';'Oct';'Nov';'Dec'];
 sec_names={'AZMP_crossBI_MB';'AZMP_crossMB_SI';'AZMP_crossSI_WB';'AZMP_crossWB_BB';'AZMP_crossBB_FC';'AZMP_crossFC_SEGB'};
 
-for s=1:size(cross_names,1);
-     name=char(cross_names(s,:));
-     for n=1:12;
-         month=char(month_vec(n,:));
-         if n==1;
-             Vol365=nan(12, size(Vol_month_mean.(name).(month),1),size(Vol_month_mean.(name).(month),2));
-             V365=nan(12, size(V_month_mean.(name).(month),1),size(V_month_mean.(name).(month),2));
-         end
-         Vol365(n,:,:)=Vol_month_mean.(name).(month);
-         V365(n,:,:)=V_month_mean.(name).(month);
-     end
-     Vol_allmonths.(name)=nanmean(Vol365,1);
-     V_allmonths.(name)=nanmean(V365,1);
- end
-for s=1:size(cross_names,1);
-     name=char(cross_names(s,:));
-     V_yearly_mean.(name)=struct();
-    index=eval(strcat('index_',name));
-     for m=2007:2018;
-         year_a=char(years_a(m-2006,:));
-         if m==2007;
-             
-             vx=nan(12,length(V_monthly.(name).(year_a).(month)(:,1)),length(V_monthly.(name).(year_a).(month)(1,:))); 
-         end
-         for n=1:12;
-             month=char(month_vec(n,:));
-             if n==1;
-                 V_mean=nan(12,length(V_monthly.(name).(year_a).(month)(:,1)),length(V_monthly.(name).(year_a).(month)(1,:)));
-             end
-            V_mean(n,:,:)=V_monthly.(name).(year_a).(month);
-         end
-         V_mean(V_mean==0)=nan;
-         v_gem=nanmean(V_mean,1);
-         v_gem=squeeze(v_gem);
-         for i=1:length(v_gem(1,:));
-             if index.vSign(i)==0;
-                v_gem(:,i)=nan;
-             end
-        end
-         V_yearly_mean.(name).(year_a)=v_gem;
-         vx(m-2006,:,:)=v_gem;          
-     end
-     v_end=nanmean(vx,1);
-     V_totalmean.(name)=squeeze(v_end);
-end        
-
+%for s=1:size(cross_names,1);
+%     name=char(cross_names(s,:));
+%     for n=1:12;
+%         month=char(month_vec(n,:));
+%         if n==1;
+%             Vol365=nan(12, size(Vol_month_mean.(name).(month),1),size(Vol_month_mean.(name).(month),2));
+%             V365=nan(12, size(V_month_mean.(name).(month),1),size(V_month_mean.(name).(month),2));
+%         end
+%         Vol365(n,:,:)=Vol_month_mean.(name).(month);
+%         V365(n,:,:)=V_month_mean.(name).(month);
+%     end
+%     Vol_allmonths.(name)=nanmean(Vol365,1);
+%     V_allmonths.(name)=nanmean(V365,1);
+% end
+%for s=1:size(cross_names,1);
+%     name=char(cross_names(s,:));
+%     V_yearly_mean.(name)=struct();
+%    index=eval(strcat('index_',name%));
+%     for m=2007:2018;
+%         year_a=char(years_a(m-2006,:));
+%         if m==2007;
+%             
+%             vx=nan(12,length(V_monthly.(name).(year_a).(month)(:,1)),length(V_monthly.(name).(year_a).(month)(1,:))); 
+%         end
+%         for n=1:12;
+%             month=char(month_vec(n,:));
+%             if n==1;
+%                 V_mean=nan(12,length(V_monthly.(name).(year_a).(month)(:,1)),length(V_monthly.(name).(year_a).(month)(1,:)));
+%             end
+%            V_mean(n,:,:)=V_monthly.(name).(year_a).(month);
+%         end
+%         V_mean(V_mean==0)=nan;
+%         v_gem=nanmean(V_mean,1);
+%         v_gem=squeeze(v_gem);
+%         for i=1:length(v_gem(1,:));
+%             if index.vSign(i)==0;
+%                v_gem(:,i)=nan;
+%             end
+%        end
+%         V_yearly_mean.(name).(year_a)=v_gem;
+%         vx(m-2006,:,:)=v_gem;          
+%     end
+%     v_end=nanmean(vx,1);
+%     V_totalmean.(name)=squeeze(v_end);
+%end        
+%save('V_totalmean_yearlymean.mat', 'V_totalmean', 'V_yearly_mean')
 
 figure;
 vertical_gap = 0.042;
@@ -63,11 +63,8 @@ horizontal_margin = [0.11, 0.02];
 vertical_margin = [0.02, 0.12];
 subplot_width = (1 - horizontal_margin(1)- horizontal_margin(2)-1*horizontal_gap)/2;
 subplot_height = (1 - vertical_margin(1)-vertical_margin(2) - 5 * vertical_gap) / 6;
-x_plot=eval(strcat('x1_',name));
-z_plot=eval(strcat('z_',name));
 for s=3;
     name=char(cross_names(s,:));
-
     figure;
     x_plot=eval(strcat('x1_',name));
     z_plot=eval(strcat('z_',name));
